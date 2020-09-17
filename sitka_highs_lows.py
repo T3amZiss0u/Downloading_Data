@@ -19,15 +19,17 @@ with open(filename) as f:
         highs.append(high)
         lows.append(low)
 
-    # Plot the high nd low temperatures.
+    # Plot the high and low temperatures.
     plt.style.use('seaborn')
     fig, ax = plt.subplots()
     ax.plot(dates, highs, c='red', alpha=0.5)
     ax.plot(dates, lows, c='blue', alpha=0.5)
+    ax.axis([min(dates), max(dates), 20, 130])
     plt.fill_between(dates, highs, lows, facecolor='blue', alpha=0.1)
 
     # Format plot
-    plt.title("Daily high and low temperatures - 2018", fontsize=24)
+    title = "Daily high and low temperatures - 2018 \nSitka, AK"
+    plt.title(title, fontsize=20)
     plt.xlabel('', fontsize=16)
     fig.autofmt_xdate()
     plt.ylabel("Temperature (F)", fontsize=16)
